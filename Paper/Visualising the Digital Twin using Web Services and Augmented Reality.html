@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Visualising the Digital Twin using Web Services
+        and Augmented Reality</title>
+
+
+    <link rel="stylesheet" href="css/materialize.css">
+    <script src="js/jquery-3.2.1.min.js"></script>
+    <script src="js/materialize.min.js"></script>
+
+</head>
+<body>
+<h1>Visualising the Digital Twin using Web Services
+    and Augmented Reality</h1>
+
+<p><b>Abstract</b>-As the number of network connected devices in
+    an industrial system increases, the management and handling
+    of all the information generated become a challenge. In this
+    work we explore concepts of Cyber-Physical System model the
+    virtual part of industrial devices (sensor, machines, CLPs) using
+    the Digital Twin concept and propose an architecture based
+    on web services for accessing their data. We present a case
+    study where an Augmented Reality system access the Twin
+    Model data via web services and display real-time information
+    to the user. Moreover, we present a review of how the involved
+    concepts, which have a strong computational background, relate
+    to industrial applications and how they can expand the possibility
+    of services and business models.</p>
+<h3>I. INTRODUCTION</h3>
+<p>We are facing the fourth industrial revolution or the so called
+    Industry 4.0 [1] not only in the European community</p>
+<p>In this context, field devices, machines, plants, factories
+    and even individual products will increasingly be connected
+    to a network (e.g. the Internet or a private factory network).
+    This will allow them to become searchable, explorable, and
+    analyzable via the network, leading to potentially new types of
+    services and business models in the value chain. However, this
+    also leads to a significant increase of available online objects,
+    making it difficult to manage all data sources both from a
+    computer system point of view as well as from a humaninteraction
+    point of view.</p>
+<p>On the computational side, Cyber Physical Systems (CPS)
+    have been proposed as a key concept of Industry 4.0 architectures.
+    A CPS can be described as a set of physical devices,
+    objects and equipments that interact with a virtual cyberspace
+    through a communication network. The cyber model of each
+    physical entity can be seen as a digital representation of the
+    real entity, thus is sometimes called “Digital Twin”[2][3]. The
+    Digital Twin can monitor and control the physical entity, while
+    the physical entity can send data to update its virtual model.</p>
+<p>On the human-interaction side, Augmented Reality (AR)
+    systems are becoming an interesting and viable solution. AR is
+    an area of Virtual Reality (VR) that combines real and virtual
+    visual components in the same scene to improve the humancomputer
+    interaction. Through the use of AR devices such as transparent glasses, tablets or smartphones, it is possible to
+    view the real environment as a background, while being guided
+    by virtual information overlaid in an interface in real-time [4].</p>
+<p>This paper focuses on an architecture based on Cyber
+    Physical Systems (CPS) for accessing their data with the use of
+    augmented reality for the Human Machine Interface. The data
+    is retrieved from different data repositories using web services,
+    which implement the Digital Twin concept. We propose a
+    concept to visualize the product data using augmented reality.</p>
+<p>This article is structured as follows: the following section
+    explains the theoretical foundation and related work.
+    In Section 3 we present the key enabling technologies for
+    implementing the concept of an architecture, that is proposed
+    in section 4. In section 5, a case study is described. Finally,
+    in the last section conclusions are drawn and future work
+    directions are signaled.</p>
+<h3>II.THEORETICAL FOUNDATION AND RELATED WORK</h3>
+<p>This section presents a state-of-the-art review of related
+    work using CPS and Digital twin These ideas are the core
+    for our work.</p>
+<h4>A. Cyber-Physical Systems (CPS)</h4>
+<p>CPSs have the ability to transform the way human-tohuman,
+    human-to-object, and object-to-object interactions take
+    place in the physical and virtual worlds. The increasing pervasiveness
+    of Wireless Sensor Networking (WSN) technologies
+    in many applications makes them an important component of
+    emerging CPS designs.</p>
+<p>A CPS is the integration of abstract computations and physical
+    processes [5] [6], where sensors, actuators, and embedded
+    devices are networked to sense, monitor, and control the
+    physical world. In contrast to traditional embedded systems,
+    the CPS is a network of interacting appliances with physical
+    inputs and outputs instead of standalone devices. A typical
+    CPS application is to connect appliances embedded with
+    sensor nodes (which are responsible for information collection
+    from the physical world as the source of CPS inputs) to some real-time decision making systems (which represents the
+    virtual world).</p>
+<p>Fig. 1 illustrates the architecture of a CPS which is mainly
+    composed of one physical layer and one virtual layer. At
+    the physical layer, sensors and actuators are responsible for
+    collecting information and acting into the physical world,
+    respectively. In addition, the different types of collected information
+    by sensors are also converted from the analog format
+    into the digital format, and then sent to the virtual layer (data
+    stream). In the virtual layer, the data management system
+    keeps the historical data in a database and send to the data
+    analytics system. Upon receipt of the inputs, the decision
+    making system executes the abstract computations to analyze
+    the collected data and then relays its decision to the actuators
+    in the physical world by a sequence of control processes.
+    The application of CPS concepts to industrial applications
+    has been discussed in several papers. For instance, [7] presents
+    an unified 5-level architecture as a guideline for implementation
+    of CPS. The authors argue that it is essential to clearly
+    define the structure and methodology of CPS as guidelines for
+    its implementation in industry. This work, also gives an initial
+    idea of the digital twin being the cyber part of a Cyber Physical
+    System. Also in [8], the authors discuss about the importance
+    of the Digital Twin for the future of manufacturing. They say
+    that Digital Twin enables all models and all data available in
+    a consistent way for the knowledge on the current state of the
+    production system in the context of Industry 4.0 and CPS.</p>
+<h4>B. Digital twin</h4>
+<p>The Digital twin is a virtual representation of the physical
+    product, a digital shadow that contains all the information and
+    knowledge of it. It is connected with the physical part in some
+    way, allowing data transfer from the physical to the cyber part.
+    It is defined as a distributed and decentralized approach to
+    manage product information at product item level along its
+    lifecycle [9].</p>
+<p>The digital twin is directly linked to the concept of Product
+    Lifecycle Management (PLM) systems [10]. PLM consolidates diverse business activities that create, modify and use data to
+    support all phases of a products lifecycle from “begin-of-life”
+    (design, production), “middle-of-life” (use, maintenance), and
+    “end-of-life” (recycling, disposal).</p>
+<p>A digital twin includes both static and dynamic information.
+    The static information can be: geometrical dimensions, bill of
+    materials, processes, etc. The dynamic information is the one
+    that changes with time along the product lifecycle.</p>
+<p>A digital twin can have intelligence. For example, an
+    intelligent product can retrieve information about itself and
+    is capable of participating or making decisions about its own
+    future [11]. As pointed out In [12] an intelligent product
+    presents following characteristics:</p>
+<ul>
+    <li>Requires a global unique identification;</li>
+    <li>Is capable of communicating with its environment</li>
+    <li>Can retrieve and store data about itself</li>
+    <li>Is capable of participating in or making decisions relevant
+        to its own destiny</li>
+</ul>
+<p>It is not necessary to have all these characteristics for a
+    digital twin, since all these are related to intelligent product.
+    However, some of these characteristics are relevant for the
+    management of the digital twin.Having this in consideration,
+    the most relevant topics for the creation of the digital twin can
+    be summarized as follows [3]:</p>
+<ul>
+    <li><b>Identification: </b>the product needs a global identification
+        to link each physical product to its digital representations.
+        Some technologies that can be used for this are: RFID
+        tags and the Electronic Product Code (EPC) [13]. It
+        provides a unique identity for every physical object
+        anywhere in the world and for its whole lifecycle.</li>
+    <li><b>Data management: </b>product data and information are
+        created and evolve along the three stages of the product
+        lifecycle: BOL, MOL and EOL. The size of the data
+        stored along these stages can achieve big proportions.
+        And, with this comes up the problem of Big Data
+        management and analytics for storing only the significant
+        data.</li>
+    <li><b>Product models:</b> different types of product models are
+        created during the different phases of product lifecycle.
+        Some of these models are: system models, functional
+        models, 3D geometric models, multiphysics models,
+        manufacturing models, and usage models. Such models,
+        sometimes, are interoperable among each other and this
+        is a critical problem since. The models should have a way
+        of “speaking” the same language.</li>
+    <li><b>Human Computer Interface:</b>having so much information
+        to handle in different data repositories may cause a
+        problem for retrieving and showing the necessary information
+        for the right user. The digital twin can provide
+        information to all kind of users and to all stakeholders
+        involved in his life. So, it is necessary to develop Human
+        Computer Interfaces (HCI) for the digital twin.</li>
+    <li><b>Communication</b>: : it is necessary to have a communication
+        path between the place where the data are stored and
+        the HCI. The digital twin can store his information in different databases. However, with the new technologies
+        for the Internet of Things, it is necessary to have a way to
+        retrieve information from these databases from any place
+        at any time.</li>
+</ul>
+<h3>III.KEY ENABLING TECHNOLOGIES</h3>
+<p>In this section, we present the key enabling technologies for
+    implementing an augmented reality systems in which different
+    users can access the information stored in the digital twin. The
+    idea is to have different databases, located in different places.
+    With the use of web services, the AR systems can query the
+    information stored in these repositories. Here, we explain what
+    are AR Systems, how they work, as well as what are web
+    services.</p>
+<h4>A. Augmented Reality Technologies (AR)</h4>
+<p>Augmented reality (AR) is a technique for superimposing
+    digital content onto the real world, using either optical or
+    video see through head-mounted displays (HMDs) or handheld
+    viewers[4]. For the latter, mobile devices such as smartphones
+    and tablets have proven to be popular and highly versatile,
+    literally putting AR technology into a persons hand. The AR
+    techniques have been applied in many different areas such
+    as education [14], design [15], manufacturing [16][17][18],
+    navigation [19], entertainment [20], and medical diagnostics
+    [21].</p>
+<p>The pervasive and persistent presence of next-generation
+    computing and communication devices in the form of smartphones
+    and tablets have a transformative impact on AR sytems.
+    In particular Mobile Augmented Reality, also referred to as
+    MAR, has gained popularity in many research domains as
+    well as the commercial market. Compared with traditional AR
+    platforms, MAR systems tend to be lighter and more portable.</p>
+<p>Fig. 2 describes the main tasks in an augmented reality
+    application. The first one, is searching the marker inside the
+    camera flow. If the marker is recognized in the scene, the
+    virtual object associated with this marker, is put over the
+    position of the marker by adjusting the virtual model with
+    the marker position. Then, the virtual model is rendered in
+    the video flow with the environment. In case the marker is not
+    recognized, the AR application keeps searching for a marker
+    in the environment.</p>
+<p>The use of Augmented Reality in industry is mainly related
+    to maintenance. In [22], an AR e-maintenance platform design
+    is presented. The aim was to help a technician during his intervention.
+    The work was focused on synchronous and remote
+    collaboration between technicians and experts to complete
+    maintenance and repair tasks by giving augmented information
+    on the users field of view.</p>
+<p>[23] also presents the use of AR in maintenance trying
+    to extract the user skill for using in Intelligent Maintenance
+    Systems. And, another work that involves using AR systems
+    to visualize data in Cyber Physical Systems, can be seen in
+    [24].</p>
+<h4>B. Web Services</h4>
+<p>Web services are defined as modular units of application
+    logic that provide functionality for other applications over
+    the network [25]. It acts as an abstraction layer, separating
+    the programming details (such as programming language and
+    platform) of how the application code is invoked [26]. Thus,
+    programs in different languages and platforms can communicate
+    through the use of this technology.</p>
+<p>This kind of technology have been used in some works
+    in industrial applications, as described in [27], motivated
+    by the fact that a Web service can be seen as a software
+    system designed to support interoperable machine-to-machine
+    interaction over a network. Many industries companies use
+    multiple software systems for management and them need to
+    exchange data with each other. A Web service is a method of
+    communication that allows two software systems to exchange
+    this data over the internet.</p>
+<p>The two main protocols on Web services are Simple Object
+    Access Protocol (SOAP) and Representational State Transfer
+    (REST).</p>
+<p>1) SOAP: SOAP-based architecture has its communication
+    of Extensible Markup Language (XML)-encoded messages
+    over Hypertext Transfer Protocol (HTTP). SOAP service sets
+    are defined in Web Service Definition Language (WSDL) files
+    which are XML files standardized according a W3C-specified
+    grammar [28].</p>
+<p>2) RESTful: The REST was introduced as an architectural
+    style for distributed scalable systems and large-scale systems.
+    Given that the great majority of RESTful Web services are
+    not described using the WSDL description, it’s not possible
+    to reuse existing clients that require this description. REST is
+    based on four architectural principles [29]:</p>
+<p>i. Resource identification through URI: exposes resources
+    
+    which identify the targets for interaction with its clients.</p>
+<p>ii. Uniform interface: resources can be manipulated using
+    four operations: PUT (create), GET (read), POST (update),
+    DELETE (delete).</p>
+<p>iii. Self-descriptive messages: the resources can be accessed
+    in a variety of formats (e.g., HTML, XML, plain text,
+    etc).</p>
+<p>iv. Stateful interactions with hyperlinks. The interaction with
+    a resource is stateless.</p>
+<h3>IV. PROPOSED ARCHITECTURE</h3>
+<p>In Fig. 1 we showed that a CPS is composed by a data
+    collection system (from sensors); a data management system; a
+    decision making system and an interative visualization system
+    for interacting with the human. In this context, the goal of this
+    architecture is how to visualize the physical data in the context
+    of a cyber physical system using Augmented Reality (AR)
+    systems. The architecture of the proposed system is illustrated
+    in Fig. 3. This architecture is divided into five layers: devices,
+    user interfaces, web services, queries and data repositories.</p>
+<h4>A. Device Layer</h4>
+<p>The first layer is composed by the devices. They can be
+    computers, tablets, mobile devices, etc. The device runs the
+    visualization systems, in this case the AR system. The user
+    operates the devices as a client in this architecture.</p>
+<h4>B. User Interface Layer</h4>
+<p>The users can operate the devices via the user interface,
+    that can be a augmented reality interface. The user interface
+    accesses the web service using a browser.</p>
+<h4>C. Web Services Layer</h4>
+<p>The web service used was the RESTful web service. It has
+    services and each service can have several resources. Each
+    service can be considered as an individual task and can be addressed by a HTTP call. In order to retrieve all information
+    related to the request made by the client, the HTTP calls the
+    service and it collects the requested information provided by
+    the involved resources. The response from server is considered
+    as the representation of the resources. This representation can
+    be generated from one resource or more number of resources</p>
+<h4>D. Query Layer</h4>
+<p>The resources build queries as a way to retrieve data from
+    the database. The protocol type of each query depends on
+    the software used by the data management systems. Possible
+    protocol types are SOAP, SQL (Structured Query Language),
+    RMI (Remote Method Invocation), HTTP and others.</p>
+<h4>E. Data repository Layer</h4>
+<p>Resources retrieve data from the database systems. The
+    advantage of using a RESTful web service is, independent
+    of the type and structure of data management system, the data
+    is accessible in the same way.</p>
+<p>The benefit of this idea using web services, is the access to
+    data stored in different data management systems using a web
+    browser. This enables the retrieval of manufacturing data and
+    the use of mobile devices.</p>
+<h2>V. CASE STUDY</h2>
+<p>A case study is presented to illustrate the proposed approach
+    introduced in the last sections. We implemented the use of Web
+    Services to retrieve information from a supervisory system
+    (used as a data repository) together with an AR system (client)
+    to visualize the data. The AR System provides a user interface
+    for the device.</p>
+<p>The example is used for visualizing the extraction and initial
+    processing of oil and gas in an offshore oil platform. This
+    is a CPS process example. Basically, the process has three
+    stages as represented in Fig. 4. In this figure, we have the
+    representation of three tanks for storing gas, oil and water.
+    These tanks, are probably controlled by supervisory system
+    that control the level of storage. But if we are allowed to
+    have a digital twin for each tank, we may have access to
+    additional tank information. For example, we can see the data
+    when the tank was built, information like the size and capacity
+    of the tank, manufacturing data and, real time data collected
+    by sensors in each tank. In this case study, we selected the real
+    time data from the sensors to be showed: the level of gas, oil
+    and water data are being displayed in the augmented reality
+    interface.</p>
+<p>The Web services and web interfaces used in this work were
+    implemented in PHP and work together with a Apache1 server.
+    By the time the data is updated in the supervisory system, the
+    variables are updated in the Digital Twins database and in ´
+    the web interface, allowing this data to be accessed over the
+    network by a web browser. Fig. 5 illustrate the web interface
+    used in the architecture. These interfaces also implement other
+    features, such as, generating markers for the identification of
+    the plant equipment.</p>
+<p>Fig. 6 illustrate the UML sequence diagram for the case
+    study. The AR System (client) requests data from the web
+    server with an HTTP GET request, for example, to the
+    resource. The web server retrieves the data from a data
+    repository, in this case, the supervisory system, and packages
+    it into a convenient representation for the client. The data
+    is returned in the form of a document. The documents are
+    commonly text strings containing JSON or XML encoded
+    objects. The client manipulates the data representation.</p>
+<p>In the augmented reality application, pictures previously
+    prepared and printed are placed on real environment so as
+    to serve as a basis for recognition and positioning of virtual
+    objects.</p>
+<p>During the execution of the application, the real images are
+    seen through the optical flow, frame by frame. Once found
+    the marker positions in the image of the frames, the virtual
+    elements are inserted over the markers. So, the video stream
+    is displayed on the mobile device screen with virtual elements
+    inserted into it.</p>
+<p>All graphics processing is performed directly in the device.
+    The only requirement to display the values captured by the
+    supervisory is the connection with Internet or local network.
+    Features such as the recognition of QRCode’s tags have been
+    implemented so to allow the identification of any equipment
+    and display information on different virtual models</p>
+<p>For the implementation of AR application we have used
+    the Unity Integrated Development Environment (IDE) and
+    the Vuforia SDK (Software Development Kit) using the C
+    programming language. The SDK Vuforia supports a lot of
+    markers that can be generated and customized from the site
+    developer. The result of applying the implementation can be
+    seem in Fig. 7. The figure shows a 3D ship prepared to
+    illustrate the context where the tanks are inserted. Above the
+    ship, we can see the level of oil, gas and water in real-time (the
+    data are retrieved from the supervisory system as explained
+    earlier).</p>
+<h3>VI. CONCLUSIONS AND FURTHER WORK</h3>
+<p>In this work, we presented the concept of the Digital Twin,
+    in the context of the Cyber Physical System and the Industry
+    4.0. The Digital Twin is a counter part of the physical device,
+    machine or product in a CPS. It has the information related
+    to the whole lifecycle of a product.</p>
+<p>However, the focus here was to show how to retrieve data
+    from the digital twin and propose the use of a augmented
+    reality system as a user interface to visualize the data.</p>
+<p>A proposed architecture was presented with the aim to
+    manage the data from the digital twin, using web services, to
+    distribute the data in other systems like an Augmented Reality
+    System. The case study used was a supervisory system as a
+    data repository, web services and the Internet to access the real
+    time data from the supervisory. The study case, illustrated how
+    to get data from the Digital Twin of a tank and how to show
+    this using a AR system.</p>
+<p>The architecture using web services can enable users to
+    easily access product, simulation and manufacturing data of
+    a Digital Twin, via a web browser. It is independent of
+    any device and enable the data to be visualized on portable
+    computer and devices.</p>
+<p>In future works, we intend to implement other data repositories,
+    which will store and serve all information related to
+    the digital twin. Also, we need to research how to collected
+    the data, and build models for the data as well. But, the goals
+    of this paper were achieved: present the concept of Digital
+    Twin; access the Digital Twin’s data from different repositories
+    using Web Services and, present a study case using Augmented
+    reality for Digitl Twin’s data visualization</p>
+<h3>ACKNOWLEDGMENT</h3>
+<p>This project has been financially supported by CAPES and
+    FINEP (Brazilian Research agencies).</p>
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red">
+        <i class="large material-icons">mode_edit</i>
+    </a>
+    <ul>
+        <li><a class="btn-floating red"><i class="material-icons">insert_chart</i></a></li>
+        <li><a class="btn-floating yellow darken-1"><i class="material-icons">format_quote</i></a></li>
+        <li><a class="btn-floating green"><i class="material-icons">publish</i></a></li>
+        <li><a class="btn-floating blue"><i class="material-icons">attach_file</i></a></li>
+    </ul>
+</div>
+</body>
+</html>
